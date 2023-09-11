@@ -64,7 +64,6 @@ const Schedule = () => {
   };
 
   const filteredSchedules = schedules.filter((schedule) => {
-    // console.log(schedule);
     if (selectedCategory === "all") {
       return (
         schedule.Faculty_Name.toLowerCase().includes(

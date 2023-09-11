@@ -22,17 +22,17 @@ const AllTeachers = () => {
       return data;
     },
   });
+
   return (
     <>
       {isLoading && <Loading></Loading>}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4  gap-4 lg:gap-8 md:gap-6 justify-items-center py-8 lg:p-16 items-center min-h-screen">
         {allUsers.map((data) => (
           <AllTeachersCard
-            key={user._id}
+            key={data._id}
             data={data}
             refetch={refetch}
             role={role}
-            isRoleLoading={isRoleLoading}
           ></AllTeachersCard>
         ))}
       </div>

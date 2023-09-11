@@ -38,17 +38,17 @@ const AddMessage = () => {
       <form onSubmit={handleMessage}>
         <h1 className="text-2xl text-center font-semibold">Message</h1>
         <div className="flex flex-col items-center justify-center">
-          <div className="form-control rounded-md shadow-xl lg:w-full p-10 grid grid-cols-1 content-center justify-items-center gap-3 bg-gradient-to-t from-[#BAD7E9] to-[#EDEDED] hover:bg-[#F7EFE5] my-5 border-t-[#FF9F9F] border-t-4">
+          <div className="form-control rounded-xl shadow-xl lg:w-full p-10 grid grid-cols-1 content-center justify-items-center gap-3 bg-[#191825d2]  my-5 border-t-[#FF9F9F] border-t-4">
             <div className="flex flex-col gap-4 justify-center items-center ">
               <textarea
                 type="text"
                 name="message"
                 required
-                className="textarea textarea-bordered lg:h-72 h-40 w-40 lg:w-96"
+                className="textarea textarea-bordered lg:h-72 h-40 w-[250px] md:w-[350px] lg:w-96"
                 placeholder="Type your message within 300 word"
               ></textarea>
 
-              <button className="btn btn-outline w-full text-black">
+              <button className="bg-primary rounded-full w-36 lg:w-1/3 mt-4 lg:mt-4 px-3 py-1 text-gray-900 font-normal hover:text-white hover:bg-[#bb2525b5] transition ease-in-out hover:-translate-2 hover:scale-110 duration-300">
                 Send
               </button>
             </div>

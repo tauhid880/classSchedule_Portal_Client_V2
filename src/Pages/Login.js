@@ -3,13 +3,16 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { toast } from "react-hot-toast";
+import useRole from "../Hook/UseRole";
 
 const Login = () => {
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.pathname || "/dashboard";
-  const { userSignIn, logOut } = useContext(AuthContext);
+  // const { user } = useContext(AuthContext);
+  // const [role, isRoleLoading] = useRole(user?.email);
+  // const location = useLocation();
+  // const from = location?.state?.pathname || "/dashboard";
+  const { userSignIn } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
@@ -23,15 +26,15 @@ const Login = () => {
     const password = data.password;
     userSignIn(email, password)
       .then((result) => {
+        navigate("/dashboard");
         reset();
-        const user = result.user;
-        navigate(from, { replace: true });
       })
       .catch((error) => {
         setLoad(false);
         toast.error(error.message, { duration: 1600 });
       });
   };
+
   return (
     <div className="relative h-[950px] md:h-[1500px] lg:h-screen bg-gradient-to-t from-[#0A1E34] to-[#0a1e34c2]">
       <section className="h-screen">

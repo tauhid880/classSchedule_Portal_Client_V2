@@ -23,7 +23,7 @@ const Profile = () => {
   return (
     <>
       {isLoading && <Loading></Loading>}
-      <div className="grid grid-cols-1 lg:p-16 mt-5">
+      <div className="grid grid-cols-1 lg:p-16">
         {users.map((user) => (
           <ProfileCard key={user._id} user={user}>
             refetch={refetch}

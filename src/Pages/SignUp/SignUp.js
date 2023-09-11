@@ -21,6 +21,7 @@ const SignUp = () => {
   const { createUser, updateUserProfile } = useContext(AuthContext);
 
   const createUserHandle = (data) => {
+    setLoad(true);
     const name = data.name;
     const image = data.image[0];
     const email = data.email;
@@ -38,7 +39,6 @@ const SignUp = () => {
           const photo = data.data.display_url;
           createUser(email, password)
             .then((result) => {
-              navigate("/dashboard");
               const profile = {
                 displayName: name,
                 photoURL: photo,
@@ -56,7 +56,8 @@ const SignUp = () => {
                   };
                   dbUser(user)
                     .then((result) => {
-                      console.log(result);
+                      // console.log(result);
+                      navigate("/dashboard");
                     })
                     .catch((error) => {
                       setLoad(false);
@@ -76,6 +77,7 @@ const SignUp = () => {
         setLoad(false);
       });
   };
+
   return (
     <div className="relative h-screen md:h-screen lg:h-screen bg-gradient-to-t from-[#0A1E34] to-[#0a1e34c2]">
       <section className="h-screen">
@@ -222,12 +224,12 @@ const SignUp = () => {
                 <div className="text-center lg:text-left mt-3">
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center w-full h-12 px-6  tracking-wide text-gray-800 font-semibold transition duration-200 rounded shadow-md bg-button"
+                    className="inline-flex items-center justify-center w-full h-12 px-6 font-semibold tracking-wide text-gray-800 transition duration-200 rounded shadow-md bg-button"
                   >
                     {load ? (
                       <span className="border-2 border-dashed border-white animate-spin w-7 h-7 rounded-full"></span>
                     ) : (
-                      " Sign Up"
+                      "Sign Up"
                     )}
                   </button>
                   <p className="text-sm font-semibold mt-2 pt-1 mb-0 text-white">
