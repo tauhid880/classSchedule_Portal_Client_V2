@@ -25,6 +25,7 @@ const Deadline = () => {
           selected={selectedDate}
           className="border p-2 mr-5  focus:outline-red-400"
           placeholderText="Click to select a date"
+          minDate={new Date()}
           onChange={handleDateChange}
         />
         {isUpdating ? (

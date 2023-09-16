@@ -15,6 +15,7 @@ import IndividualMessagesData from "../Pages/Faculty/IndividualMessagesData";
 import Messages from "../Pages/Admin/Messages";
 import FacultyTeachers from "../Pages/AllTeachers/FacultyTeachers";
 import Deadline from "../Pages/Admin/Deadline";
+import PrivateRoute from "./PrivateRoute";
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -33,7 +34,11 @@ export const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout></DashboardLayout>,
+    element: (
+      <PrivateRoute>
+        <DashboardLayout></DashboardLayout>
+      </PrivateRoute>
+    ),
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {

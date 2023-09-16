@@ -3,15 +3,12 @@ import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthProvider";
 import { toast } from "react-hot-toast";
-import useRole from "../Hook/UseRole";
 
 const Login = () => {
   const [load, setLoad] = useState(false);
   const navigate = useNavigate();
-  // const { user } = useContext(AuthContext);
-  // const [role, isRoleLoading] = useRole(user?.email);
-  // const location = useLocation();
-  // const from = location?.state?.pathname || "/dashboard";
+  const location = useLocation();
+  const from = location?.state?.pathname || "/dashboard";
   const { userSignIn } = useContext(AuthContext);
   const {
     register,
@@ -26,7 +23,7 @@ const Login = () => {
     const password = data.password;
     userSignIn(email, password)
       .then((result) => {
-        navigate("/dashboard");
+        navigate(from, { replace: true });
         reset();
       })
       .catch((error) => {
@@ -56,7 +53,6 @@ const Login = () => {
                     })}
                     type="text"
                     className="text-lg form-control block w-full px-4 py-2 font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleFormControlInput2"
                     placeholder="Email address"
                   />
                   {errors?.email && (
@@ -71,7 +67,6 @@ const Login = () => {
                     })}
                     type="password"
                     className="form-control block w-full px-4 py-2 text-lg font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
-                    id="exampleFormControlInput2"
                     placeholder="Password"
                   />
                   {errors?.password && (
