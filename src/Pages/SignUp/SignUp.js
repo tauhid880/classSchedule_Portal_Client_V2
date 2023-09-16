@@ -35,10 +35,11 @@ const SignUp = () => {
     imageUpload(formData)
       .then((data) => {
         if (data.success) {
-          reset();
           const photo = data.data.display_url;
           createUser(email, password)
             .then((result) => {
+              reset();
+              navigate("/dashboard");
               const profile = {
                 displayName: name,
                 photoURL: photo,
@@ -57,7 +58,6 @@ const SignUp = () => {
                   dbUser(user)
                     .then((result) => {
                       // console.log(result);
-                      navigate("/dashboard");
                     })
                     .catch((error) => {
                       setLoad(false);
